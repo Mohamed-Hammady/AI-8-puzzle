@@ -1,6 +1,6 @@
 import time
 from queue import LifoQueue
-from functions import *
+from Functions import *
 
 GOAL = 12345678
 

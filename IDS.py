@@ -1,6 +1,6 @@
 import time
 from queue import LifoQueue
-from functions import *
+from Functions import *
 
 GOAL = 12345678
 MAX_LIMIT = 362881 # number of possible permutations of the tiles + 1

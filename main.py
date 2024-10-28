@@ -2,6 +2,9 @@ from BFS import *
 from A_Star import a_star
 import tkinter as tk
 
+from DFS import DFS
+from IDS import IDS
+
 
 def update_puzzle():
     global state, puzzle_grid
@@ -98,9 +101,9 @@ while True:
             case "1":
                 expanded, depth, time, goal_reached, parent = solve_bfs(initial_state)
             case "2":
-                print("DFS")
+                expanded, depth, time, goal_reached, parent = DFS(initial_state)
             case "3":
-                print("iterative DFS")
+                expanded, depth, time, goal_reached, parent = IDS(initial_state)
             case "4":
                 expanded, depth, time, goal_reached, parent = a_star(initial_state, 1)
             case "5":

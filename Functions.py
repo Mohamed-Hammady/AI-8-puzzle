@@ -1,3 +1,7 @@
+import heapq
+import math
+
+
 def enter_state(state):
     print("Enter the initial state of 8 puzzle:")
     num = 0
@@ -16,7 +20,6 @@ def enter_state(state):
         return True
     except Exception as e:
         return False
-
 
 
 def print_state(state):
@@ -118,3 +121,35 @@ def goal_cost(parent):
         state = parent[state]
         cost += 1
     return cost
+
+
+def decreaseKey(frontier, child, curr_cost):
+    for cost, state in frontier:
+        if state == child :
+            if cost > curr_cost:
+                heapq.heappush(frontier, (curr_cost, child))
+            break
+    return
+
+
+def manhattan_distance(state, original_cell_pos):
+    distance = 0
+    state_str = str(state)
+    for i in range(len(state_str)):
+        if state_str[i] != '0':
+            target_row, target_col = original_cell_pos[int(state_str[i])]
+            current_row, current_col = i / 3, i % 3
+            distance += abs(target_row - current_row) + abs(target_col - current_col)
+    return distance
+
+
+def euclidean_distance(state, original_cell_pos):
+    distance = 0
+    state_str = str(state)
+    for i in range(len(state_str)):
+        if state_str[i] != '0':
+            target_row, target_col = original_cell_pos[int(state_str[i])]
+            current_row, current_col = i / 3, i % 3
+            distance += math.sqrt((target_row - current_row) ** 2 + (target_col - current_col) ** 2)
+    return distance
+
