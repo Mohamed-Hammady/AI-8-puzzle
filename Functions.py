@@ -1,3 +1,4 @@
+import heapq
 import math
 
 
@@ -124,8 +125,9 @@ def goal_cost(parent):
 
 def decreaseKey(frontier, child, curr_cost):
     for cost, state in frontier:
-        if state == child and cost > curr_cost:
-            cost = curr_cost
+        if state == child :
+            if cost > curr_cost:
+                heapq.heappush(frontier, (curr_cost, child))
             break
     return
 
