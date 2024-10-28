@@ -1,4 +1,3 @@
-import sys
 import time
 from queue import Queue
 from Functions import *
@@ -9,7 +8,7 @@ def solve_bfs(initial_state):
     goal_state = 12345678
 
     frontier = Queue()
-    added = set([])
+    added = set([])  # states added to the frontier
     visited = set([])
     parent = {initial_state: -1}
 
@@ -29,7 +28,6 @@ def solve_bfs(initial_state):
                 frontier.put(child)
                 added.add(child)
                 parent[child] = state
-
 
     end_time = time.time()
 
