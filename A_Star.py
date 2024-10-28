@@ -60,4 +60,4 @@ def a_star(initial_state, method_Flag):
 
     end_time = time.time()
     running_time=int((end_time - start_time) * 1000)
-    return parent, visited, depth, running_time, goal_reached
+    return len(visited), depth, running_time, goal_reached, parent

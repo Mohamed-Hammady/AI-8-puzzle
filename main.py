@@ -1,5 +1,5 @@
-from A_Star import solve_a_start
 from BFS import *
+from A_Star import a_star
 import tkinter as tk
 
 
@@ -96,17 +96,21 @@ while True:
         algorithm = input()
         match algorithm:
             case "1":
-                expanded, depth, time, parent = solve_bfs(initial_state)
+                expanded, depth, time, goal_reached, parent = solve_bfs(initial_state)
             case "2":
                 print("DFS")
             case "3":
                 print("iterative DFS")
             case "4":
-                expanded, depth, time, parent = solve_a_start(initial_state, 1)
+                expanded, depth, time, goal_reached, parent = a_star(initial_state, 1)
             case "5":
-                expanded, depth, time, parent = solve_a_start(initial_state, 0)
+                expanded, depth, time, goal_reached, parent = a_star(initial_state, 0)
             case _:
                 choice = False
+
+    if not goal_reached:
+        print("Goal wasn't reached")
+        continue
 
     print("The path to the goal")
     child = goal_path(parent)

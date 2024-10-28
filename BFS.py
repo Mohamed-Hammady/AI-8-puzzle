@@ -30,10 +30,7 @@ def solve_bfs(initial_state):
                 added.add(child)
                 parent[child] = state
 
-    if not goal_reached:
-        print("ERROR 404")
-        sys.exit()
 
     end_time = time.time()
 
-    return len(visited), goal_cost(parent), int((end_time - start_time) * 1000), parent
+    return len(visited), goal_cost(parent), int((end_time - start_time) * 1000), goal_reached, parent
