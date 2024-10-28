@@ -150,3 +150,4 @@ def euclidean_distance(state, original_cell_pos):
             current_row, current_col = i / 3, i % 3
             distance += math.sqrt((target_row - current_row) ** 2 + (target_col - current_col) ** 2)
     return distance
+
