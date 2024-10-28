@@ -1,3 +1,4 @@
+from A_Star import solve_a_start
 from BFS import *
 import tkinter as tk
 
@@ -64,9 +65,9 @@ while True:
             case "3":
                 print("iterative DFS")
             case "4":
-                print("Manhattan A*")
+                parent, child = solve_a_start(initial_state, 1)
             case "5":
-                print("Euclidean A*")
+                parent, child = solve_a_start(initial_state, 0)
             case _:
                 choice = False
 
