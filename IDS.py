@@ -15,7 +15,7 @@ def DLS(state, limit):
         parent : a dictionary mapping each state to its parent in the search tree
     '''
     frontier = LifoQueue() # stores tuples of states and their depth when reached
-    visited = set()
+    min_depth = {}
     parent = {state: -1}
 
     goal_reached = False
@@ -23,8 +23,10 @@ def DLS(state, limit):
 
     while not frontier.empty():
         s_value, s_depth = frontier.get()
-        visited.add(s_value)
+        if (s_value in min_depth and min_depth[s_value]<=s_depth):
+            continue
 
+        min_depth[s_value] = s_depth
         if (s_value==GOAL):
             goal_reached = True
             break
@@ -36,7 +38,7 @@ def DLS(state, limit):
                     frontier.put((child, s_depth+1))
                     parent[child] = s_value
     
-    visited_size = len(visited)
+    visited_size = len(min_depth)
     return goal_reached, visited_size, parent
 
 def IDS(state):

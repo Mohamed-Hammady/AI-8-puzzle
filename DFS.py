@@ -43,7 +43,7 @@ def DFS(state) :
                 parent[child] = s
     
     visited_size = len(visited)
-    depth = goal_cost(parent)
+    depth = goal_cost(parent) if goal_reached else float('inf')
 
     end_time = time.time()
     running_time = int((end_time - start_time) * 1000)
